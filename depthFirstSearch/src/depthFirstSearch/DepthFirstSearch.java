@@ -3,14 +3,14 @@ package depthFirstSearch;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-
-
 public class DepthFirstSearch {
 
 	public static void main(String[] args) {
 
+		//intialize graph g
 		Graph g = new Graph(4);
 		
+		//add edges to graph g
         g.addEdge(0, 1);
         g.addEdge(0, 2);
         g.addEdge(1, 2);
@@ -20,12 +20,14 @@ public class DepthFirstSearch {
         
         System.out.println("Depth first search traversal of the graph (starting at vertext 2) is ");
         
+        //run DFS on graph g
         g.DFS(2);
 
 	}
 
 }
 
+//define graph class
 class Graph {
 	
 	//vertices attribute
