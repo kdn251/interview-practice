@@ -16,11 +16,67 @@ public class BinarySearchTree {
 		binarySearchTree.add(7);
 		
 		//print header
-		System.out.println("Inorder traversal of Binary Search Tree: ");
+		System.out.print("Preorder traversal of Binary Search Tree: ");
+		
+		//run preorder traversal algorithm on BST
+		preOrderTraversal(binarySearchTree.root);
+		
+		System.out.println();
+		
+		//print header
+		System.out.print("Inorder traversal of Binary Search Tree: ");
 		
 		//run inorder traversal algorithm on BST
 		inOrderTraversal(binarySearchTree.root);
+		
+		System.out.println();
+		
+		//print header
+		System.out.print("Postorder traversal of Binary Search Tree: ");
+		
+		//run postorder traversal algorithm on BST
+		postOrderTraversal(binarySearchTree.root);
+		
 
+		
+		
+		
+	}
+
+	private static void postOrderTraversal(Node root) {
+
+		if(root != null) {
+			
+			//process left
+			postOrderTraversal(root.left);
+			
+			//proces right
+			postOrderTraversal(root.right);
+			
+			//print node's data
+			System.out.print(root.data + " ");
+			
+			
+		}
+		
+		
+	}
+
+	private static void preOrderTraversal(Node root) {
+
+		if(root != null) {
+			
+			//print node's data
+			System.out.print(root.data + " ");
+			
+			//process left
+			preOrderTraversal(root.left);
+			
+			//process right
+			preOrderTraversal(root.right);
+			
+			
+		}
 		
 		
 		
@@ -31,8 +87,13 @@ public class BinarySearchTree {
 		
 		if(root != null) {
 			
+			//process left
 			inOrderTraversal(root.left);
+			
+			//print node's data
 			System.out.print(root.data + " ");
+			
+			//process right
 			inOrderTraversal(root.right);
 			
 		}
@@ -42,30 +103,38 @@ public class BinarySearchTree {
 
 }
 
+//tree class definition
 class Tree {
 	
+	//root of tree
 	Node root;
 	
+	
+	//tree constructor
 	Tree(int value) {
 		
 		root = new Node(value);
 		
 	}
 	
+	//getter for root of tree
 	private Node getRoot(Tree t) {
 		
 		return t.root;
 		
 	}
 	
+	//add function
 	void add(int value) {
 		
 		root = recursiveAdd(root, value);
 		
 	}
 
+	//recursive helper function for add method
 	private Node recursiveAdd(Node root, int value) {
-
+		
+		//if we have reached the bottom of the tree insert the node
 		if(root == null) {
 			
 			Node newNode = new Node(value);
@@ -73,18 +142,21 @@ class Tree {
 			
 		}
 		
+		//go into left subtree
 		else if(value < root.data) {
 			
 			root.left = recursiveAdd(root.left, value);
 			
 		}
 		
+		//go into right subtree
 		else {
 			
 			root.right = recursiveAdd(root.right, value);
 			
 		}
 		
+		//return root of tree
 		return root;
 
 	}
@@ -92,12 +164,19 @@ class Tree {
 	
 }
 
+//node class definition
 class Node {
 	
+	//data attribute
 	int data;
+	
+	//left child
 	Node left;
+	
+	//right child
 	Node right;
 	
+	//node constructor
 	Node(int data) {
 		
 		this.data = data;
